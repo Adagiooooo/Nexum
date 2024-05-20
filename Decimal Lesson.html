@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Lessons & Exercises</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<style>
+    *{
+        font-family: "Exo 2", sans-serif;
+        color: #dddddd;
+    }
+
+    a{
+        text-decoration: none;
+    }
+
+    p{
+        font-size: 18px;
+    }
+
+    body{
+        margin: 0;
+        overflow-x: hidden;
+        background-color: #212125;
+    }
+
+    html{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid black; 
+        
+        height: 100px;
+        width: 100%;
+        position: sticky;
+        top: 0;
+        background-color: #212125;
+        z-index: 5;
+    }
+
+    .header a{
+        display: inline-block;
+        height: 100%;
+    }
+    .header img{
+        margin-left: 14%;
+        object-fit: cover;
+        height: 100%;
+    }
+    .bar{
+        display: flex;
+        text-align: center;
+    }
+    .bar a{
+        text-decoration: none;
+        line-height: 28px;
+        font-size: 20px;
+        padding: 11px 55px;
+    }
+    .active{
+    
+        background-color: #239D60;
+    }
+    
+    .side{
+       
+       width: 13%; 
+       height: 100vh;
+       
+    }
+    .content{
+        width: 70%;
+    }
+    .navbar{
+        width: 13%;
+        position: fixed;
+        overflow: auto;
+        height: 90vh;
+        border-right: solid 1px black;
+        border-bottom: solid 1px black;
+
+        
+    }
+
+    .navbar h2{
+        padding: 0;
+        margin: 0;
+        padding-bottom: 0.5em;
+        padding-top: 0.5em;
+    }
+    .navbar li{
+        line-height: 200%;
+        
+    }
+
+    .navbar a:hover {
+    background-color:#5c5c68;
+    cursor: pointer;
+    }
+
+    #convLink:hover, #arithLink:hover {
+    background-color:#5c5c68;
+    }   
+
+    .navbar_titlediv{
+        margin-left: 1em;
+        margin-right: 2em;
+    }
+   
+    .navbar_content{
+        display: flex;
+        flex-direction: column;
+        margin-left: 1.5em;
+    }
+    .main{
+        
+        padding: 2em;
+        padding-top: 0;
+        width: 65%;  /*binago ko, pakicheck kung okay*/
+        border-right: 1px solid black;
+    }
+
+    input, select{
+       font-size: larger;
+       margin-left: 1em;
+    }
+
+    .input{
+        text-align: center;
+    }
+
+    .form_content{
+        padding: 1em;
+        margin-top: 1px;
+        margin-left: 1em;  /*binago ko, pakicheck kung okay*/
+        overflow: hidden;   /*binago ko, pakicheck kung okay*/
+    }
+
+    .startButton{
+        padding: 0;  /*binago ko, pakicheck kung okay*/
+        text-align: center; 
+        border: solid 1px;
+        margin: 2em;
+        padding: 1em;
+        width: 50;  
+    }
+
+  
+    li{
+        padding: 0;  /*binago ko, pakicheck kung okay*/
+        list-style: none; 
+        font-size: smaller;  /*binago ko, pakicheck kung okay*/
+        padding: 0.15em;  /*binago ko, pakicheck kung okay*/
+    }
+    ul{
+        padding: 0;  /*binago ko, pakicheck kung okay*/
+    }
+    
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+     margin: 0;
+    }
+
+    table{  
+        border-collapse: separate;
+        border-spacing: 0.3em;
+        padding: 22px;  
+    }
+    tr, td{
+        padding: 7px;
+        overflow: hidden;
+    }
+    .larger-gap td{
+        padding-top: 30px;
+    }
+
+    #box{
+        overflow-x: auto;
+    }
+
+    #pbox{
+       line-height: 5px; 
+    }
+
+    #plist{
+        font-size: 16px;
+        margin-left: 50px;
+        list-style-type: disc; 
+    }
+    #logoFull{
+        margin: 0;
+    }
+    #logoIcon{
+        margin: 0;
+        display: none;
+    }
+    #hamburgerID, #dropdownID{
+        display: none;
+        width: 40px;
+        height: 40px;
+    }
+    #menuID{
+        display: none;
+    }
+    .logoPlace{
+        display: flex;
+        align-items: center;
+    }
+    .hamburgerClass{
+        display: none;
+        cursor: pointer;
+    }
+ 
+   ::-webkit-scrollbar{
+    width: 2px;
+   }
+
+   ::-webkit-scrollbar-thumb{
+    background-color: #239D60;
+   }
+
+   #menuList{
+    display: none;
+   }
+
+   #testtt{
+    display: none;
+   }
+  
+   .menuItem:hover{
+    background-color:#5c5c68;
+   }
+ 
+
+   .menuBar{
+    display: flex;
+    flex-direction: row;
+    padding-top: 30px;
+    padding-left: 10px;
+    transform: translate(15px);
+    height: 60px;
+   }
+
+   
+   .menuBar:hover{
+    background-color: #239D60;
+   }
+
+   span{
+        height: 40px;
+        width: 40px;
+        margin: 10px;
+        float:right;
+        background-color: #239D60;
+        color: #dddddd;
+        text-align: center;
+    }
+    .material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+    line-height: 1.8;
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+    float:right;
+    background-color: #239D60;
+    color: #dddddd;
+    text-align: center;
+    }
+
+
+   @media (max-width: 1588px){
+        .side, .navbar{
+            width: 17%;
+        }
+        
+    }
+
+    @media (max-width: 1412px){
+        .side, .navbar{
+            width: 16%;
+        }
+    }
+
+    @media (max-width: 1150px){
+        .side, .navbar{
+            width: 19%;
+        }
+    }
+
+    @media (max-width: 1066px){
+        .side, .navbar{
+            width: 19%;
+        }
+    }
+
+    
+
+
+    @media (max-width: 968px){
+        .header{
+          justify-content: none;
+        }
+        .side, .navbar{
+            width: 22%;
+        }
+
+    }
+
+
+
+    @media (max-width: 908px){
+
+        .side{
+            width: 25%;
+        }
+        .bar{
+            margin-left: -52px;
+        }
+    }
+
+    @media (max-width: 856px){
+        .side{
+           display: none;
+        }
+
+        #sideID{
+            background-color: #212125;
+            position: fixed;
+            left: 0;
+            top: 11%;
+            z-index: 3;
+            width: 295px;
+            font-size: larger;
+        }
+
+        #navbarID{
+            width: 295px;
+            z-index: 10;
+        }
+
+        .main{
+            width: 100%;
+        }
+        #logoFull{
+            display: none;
+        }
+        #hamburgerID, .hamburgerClass, #logoIcon{
+            display: block;
+        }
+        .header{
+          justify-content: space-evenly;
+        }
+        #conversionBar{
+            border-left: #dddddd;
+            border-left-style: solid;
+            border-left-width: 2px;
+    
+        }
+        
+    }
+
+    @media (max-width: 853px){
+        #navbarID, #sideID{
+            top: 11%;
+            height: 90vh;
+        }
+       
+    }
+
+
+    @media (max-width: 820px){
+        #logoIcon{
+            margin-left: 0.7em;
+        }
+        #navbarID, #sideID{
+           
+            height: 91vh;
+        }
+       
+    }
+
+    @media (max-width: 796px){
+
+        
+        .bar a{
+            display: none;
+        }
+        #logoFull{
+            display: block;
+            margin-left: 5em;
+        }
+        #logoIcon{
+            display: none;
+        }
+        #dropdownID{
+            display: block;
+        }
+        #menuID{
+            padding: 0;
+            display: block;
+        }
+
+        .bar{
+            display: flex;
+            align-items: center;
+        }
+
+        #menuList{
+        margin: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #141416;
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
+        align-items: center;
+        justify-content: center;
+        gap: 2em;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        z-index: 2;
+        
+        }
+
+        #menuList a{
+        
+        width: 100%;
+        text-decoration: none;
+        line-height: 28px;
+        font-size: 20px;
+        text-align: center;
+        padding: 11px 55px;
+        border: 1px solid gray;
+        }
+
+
+
+
+
+    } 
+
+    @media (max-width: 768px){
+        #sideID{
+            top: 9%;
+        }
+       
+    }
+
+    @media (max-width: 614px){
+        #logoFull{
+            margin-left: 3em;
+        }
+
+
+        
+    }
+
+    @media (max-width: 586px){
+        .header{
+            gap: 0.2em;
+        }
+        #logoFull{
+            margin-left: 1em;
+        }
+    
+    }
+
+    @media (max-width: 568px){
+        .header{
+            width: 47vh;
+        }
+        #logoFull{
+            margin-left: 1.3em;
+        }
+        .navbar{
+            top: 14%;
+        }
+        
+    
+    }
+
+    @media (max-width: 550px){
+        .header{
+            width: 66vh;
+        }
+        #logoFull{
+            margin-left: 1.3em;
+        }
+        
+        #sideID, #navbarID{
+            top: 9%;
+            height: 98vh;
+        }
+        
+    
+    }
+
+ 
+
+
+    @media (max-width: 540px){
+        .header{
+            width: 82vh;
+        }
+        #logoFull{
+            margin-left: 1em;
+        }
+
+        #menuList{
+            height: 135vh;
+        }
+
+        #sideID, #navbarID{
+            top: 8%;
+            height: 125vh;
+        }
+    
+    }
+
+    @media (max-width: 540px) and (max-height: 720px){
+        .header{
+            width: 82vh;
+        }
+        #logoFull{
+            margin-left: 1em;
+        }
+
+        #sideID, #navbarID{
+            top: 12%;
+            height: 97vh;
+        }
+
+        #menuList{
+            height: 135vh;
+        }
+    
+    }
+
+    @media (max-width: 538px){
+        .header{
+            width: 70.5vh;
+        }
+        #logoFull{
+            margin-left: 1em;
+        }
+     
+
+        #menuList{
+            height: 135vh;
+        }
+    
+    }
+
+
+    @media (max-width: 538px){
+        .header{
+            width: 70.5vh;
+        }
+        #logoFull{
+            margin-left: 1em;
+        }
+     
+
+        #menuList{
+            height: 135vh;
+        }
+    
+    }@media (max-width: 532px){
+        
+        .header{
+            width: 66vh;
+        }
+    }
+
+
+    @media (max-width: 430px){
+        .header{
+            width: 115%;
+
+        }
+
+        #logoFull{
+            margin-left: 1em;
+        }
+        
+        #sideID, #navbarID{
+            top: 8%;
+            font-size: larger;
+            height: 107vh;
+        }
+
+    }
+
+
+    @media (max-width: 414px){
+        .header{
+            width: 115.5%;
+
+        }
+        .side{
+            width: 65%;
+            font-size: larger;
+        }
+        #sideID, #navbarID{
+            top: 9%;
+            height: 107vh;
+        }
+
+        #logoFull{
+            margin-left: 1em;
+        }
+        
+    }
+
+    @media (max-width: 390px){
+        .header{
+            width: 116%;
+            justify-content: space-evenly;
+        }
+
+        #logoFull{
+            margin-left: 1em;
+        }
+        
+    }
+
+    
+    @media (max-width: 375px){
+        .main{
+            width:105%;
+        }
+        .header{
+            width: 124%;
+            justify-content: space-evenly;
+        }
+        #hamburgerID{
+            margin-left: 1em;
+        }
+        #logoFull{
+            margin-left: 2em;
+        }
+        .bar{
+            margin-left: 0.3em;
+        }
+
+        #sideID, #navbarID{
+            top: 8.5%;
+            height: 120vh;
+        }
+    
+    }
+
+    @media (max-width: 368px){
+        html{
+            width: 48vh;
+        }
+
+        #logoFull{
+            margin-left: 1em;
+        }
+        #sideID, #navbarID{
+            top: 8%;
+            height: 126vh;
+        }
+         
+    }
+
+    @media (max-width: 360px){
+        
+        html{
+            width: 50vh;
+        }
+        .header{
+            width: 114%;
+        }
+        #logoFull{
+            margin-left: 1em;
+        }
+        #sideID, #navbarID{
+            top: 250;
+            height: 130vh;
+        }
+        
+        
+    }
+
+    @media (max-width: 344px){
+        #menuList{
+            height:150vh
+        }
+        #logoFull{
+            margin-left: 1em;
+        }
+        #sideID, #navbarID{
+            top: 100px;
+            height: 153vh;
+        }
+        
+        
+    }
+
+    
+    @media (max-width: 292px){
+        #menuList{
+            height:400vh;
+        }
+        #logoFull{
+            margin-left: 2%;
+        }
+        #sideID{
+            top: 5%;
+            height:1000vh;
+        }
+    }
+
+    @media (max-width: 164px){
+        #menuList{
+            height:400vh
+        }
+        #logoFull{
+            margin-left: 2%;
+        }
+        #sideID{
+            top: 3%;
+        }
+    }
+
+</style>
+<body>
+    <div class="header">
+        <div class="hamburgerClass"><svg xmlns="http://www.w3.org/2000/svg" id="hamburgerID" onclick="popOutSidebar()" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></div>  
+        <div class="logoPlace">
+                <div>
+                    <img src="nexum_logo_full.png" id="logoFull" style="height: 100px; width: auto;" href="Conversion Calculator.html"></a>
+                    <img src="nexum_logo_icon.png" id="logoIcon" style="height: 70px; width: auto;" href="Conversion Calculator.html"></a>
+                </div>
+        </div>
+        <a href="Homepage.html"></a>
+         <div class="bar">   
+             <a href="Conversion Calculator.html"  id="convLink"style="border-right: 2px solid;">Conversion <br> Calculator</a>
+             <a href="Arithmetic Calculator.html" id="arithLink"style="border-right: 2px solid;">Arithmetic <br> Calculator</a>
+             <a href="#" class="active">Lessons & <br> Exercises</a>
+             <div class="menuBar">
+                <a id="menuID" class="menubar" onclick="popOutMenu()" >Menu</a><svg xmlns="http://www.w3.org/2000/svg"  onclick="popOutMenu()"  class="menubar" id="dropdownID" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed" style="margin-top: -0.25em"><path d="M480-360 280-560h400L480-360Z"/></svg>
+             </div>
+         </div>    
+     </div>
+
+
+
+
+        <div style="display: flex; height: 100%;">
+           
+        <div class="side" id="sideID">
+        
+            <div class="navbar" id="navbarID">
+                    <a href="NumberSystems.html" style="text-decoration: none;"><h3 style="text-align: center;">Introduction to <br> Number Systems</h3></a>
+                    <hr style="width:85%;text-align:center;">
+                    <div class="navbar_div">
+                            
+                        <div class="navbar_content">
+                            <li><h2 class="active">Decimal</h2></li>
+                            <li><a href="Decimal Lesson.html#">Definition and Base</a></li>
+                            <li><a href="Decimal Lesson.html#db">Decimal to Binary</a></li>
+                            <li><a href="Decimal Lesson.html#do">Decimal to Octal</a></li>
+                            <li><a href="Decimal Lesson.html#dh">Decimal to Hexadecimal</a></li>
+                            <li><a href="Decimal Lesson.html#da">Decimal Addition</a></li>
+                            <li><a href="Decimal Lesson.html#ds">Decimal Subtraction</a></li>
+                            <li><a href="Decimal Lesson.html#dm">Decimal Multiplication</a></li>
+                            <li><a href="Decimal Lesson.html#dd">Decimal Division</a></li>
+                        </div>
+                            <br>
+                            <hr style="width:85%;text-align:center;">
+
+
+                            <div class="navbar_content">
+                                <li><h2 class="navbar_titlediv">Binary</h2></li>
+                                <li><a href="Binary Lesson.html#">Definition and Base</a></li>
+                                <li><a href="Binary Lesson.html #bdc">Binary to Decimal</a></li>
+                                <li><a href="Binary Lesson.html #bo">Binary to Octal</a></li>
+                                <li><a href="Binary Lesson.html #bh">Binary to Hexadecimal</a></li>
+                                <li><a href="Binary Lesson.html #ba">Binary Addition</a></li>
+                                <li><a href="Binary Lesson.html #bs">Binary Subtraction</a></li>
+                                <li><a href="Binary Lesson.html #bm">Binary Multiplication</a></li>
+                                <li><a href="Binary Lesson.html #bd">Binary Division</a></li>
+                            </div>
+                            <br>
+                            <hr style="width:85%;text-align:center;">
+
+                            <div class="navbar_content">
+                                <li><h2 class="navbar_titlediv">Octal</h2></li>
+                                <li><a href="Octal Lesson.html#">Definition and Base</a></li>
+                                <li><a href="Octal Lesson.html#odc">Octal to Decimal</a></li>
+                                <li><a href="Octal Lesson.html#ob">Octal to Binary</a></li>
+                                <li><a href="Octal Lesson.html#oh">Octal to Hexadecimal</a></li>
+                                <li><a href="Octal Lesson.html#oa">Octal Addition</a></li>
+                                <li><a href="Octal Lesson.html#os">Octal Subtraction</a></li>
+                                <li><a href="Octal Lesson.html#om">Octal Multiplication</a></li>
+                                <li><a href="Octal Lesson.html#od">Octal Division</a></li>
+                            </div>
+                            <br>
+                            <hr style="width:85%;text-align:center;">
+                            
+                            
+                            <div class="navbar_content">
+                                <li><h2 class="navbar_titlediv">Hexadecimal</h2></li>
+                                <li><a href="Hexadecimal Lesson.html#">Definition and Base</a></li>
+                                <li><a href="Hexadecimal Lesson.html#h-toDec">Hexadecimal to Decimal</a></li>
+                                <li><a href="Hexadecimal Lesson.html#h-toBin">Hexadecimal to Binary</a></li>
+                                <li><a href="Hexadecimal Lesson.html#h-toOct">Hexadecimal to Octal</a></li>
+                                <li><a href="Hexadecimal Lesson.html#ha">Hexadecimal Addition</a></li>
+                                <li><a href="Hexadecimal Lesson.html#hs">Hexadecimal Subtraction</a></li>
+                                <li><a href="Hexadecimal Lesson.html#hm">Hexadecimal Multiplication</a></li>
+                                <li><a href="Hexadecimal Lesson.html#hd"> Hexadecimal Division</a></li>
+                            </div>
+                                <br>
+                                <hr style="width:85%;text-align:center;">
+                                <div>
+                                    <a href="Exercises.html"><div class="startButton" style="background-color: #239D60;;">Create Exercise</div></a>
+                                </div>
+                    </div>
+            </div>
+
+    </div>
+
+    
+    <div class="main">
+        <div id="testtt">
+        <div id="menuList">
+            <a href="Conversion Calculator.html" class="menuItem">Conversion <br> Calculator</a>
+             <a href="Arithmetic Calculator.html" class="menuItem">Arithmetic <br> Calculator</a>
+             <a href="#" class="active">Lessons & <br> Exercises</a>
+        </div>
+    </div>
+     <div id="def" class="exerciseCreator">
+        <div  style= "font-size: 45px; padding: 0.3rem; margin-left: 10px;">Decimal<a href="Binary Lesson.html"><span  class="material-symbols-outlined">arrow_forward_ios</span></a><a href="NumberSystems.html">
+            <span  class="material-symbols-outlined">arrow_back_ios</span></a></div>
+        <hr>
+        <div style= "font-size: 20px;">
+            <p>Definition:</p>
+        </div>
+            <div>
+            <p>In the number system, different bases represent different types of numbers: base 2 is binary, base 8 is octal, base 10 is decimal, and base 16 is hexadecimal.</p>
+            <ul>
+                <li>The decimal number system has a base value of 10. It produces numbers using ten
+                    digits (0–9).</li>
+                <li>Each digit in the number has a specific place value, which is a product of different
+                    powers of ten.</li>                  
+                <li>The place value is referred to from right to left, with the first place
+                    value being named units, the second being tens, and so on for hundreds, thousands,
+                   etc. </li>
+                <li>The place value for units is 10^0, tens is 10^1, hundreds is 10^2, thousands is 10^3, and
+                    so on.</li>
+              </ul>  
+            </div>
+            <hr>
+            <div id="db" style= "font-size: 20px;">
+                <p>Decimal to Binary Conversion</p>
+            </div>
+            <div>
+            <p>To convert a decimal number to binary, we follow these steps:</p>
+                <ol>
+                    <li>Divide the Decimal Number by 2: Start by dividing the decimal number by 2. Note the quotient and the remainder.</li>
+                    <li>Repeat Division: Continue dividing the quotient by 2 until the quotient becomes 0. Each time, note the remainder.</li>
+                    <li>Write Remainders in Reverse Order: Once the quotient becomes 0, write down the remainders in reverse order. This gives you the binary equivalent of the decimal number.</li>
+                  </ol>
+                  <table border="1">
+                    <tr>
+                        <th>Steps</th>
+                        <th>Number System</th>
+                        <th>Quotient</th>
+                        <th>Remainder</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>13</td>
+                        <td>6</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>6</td>
+                        <td>3</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                    </tr>
+                </table>  
+            <p>Reading the remainders in reverse order, we get 1101.</p>
+            <p>So, the binary equivalent of 13 is 1101</p>              
+        </div>
+        <hr>
+            <div id="do" style= "font-size: 20px;">
+                <p>Decimal to Octal Conversion</p>
+            </div>
+            <div>
+            <p>Definition:</p>
+            <p>Octal numbers, based on 8s and using digits 0-7, can be converted to decimal by multiplying each digit by its place value and adding the results. Place values are 80, 81, and 82. Octal is handy for representing UTF-8 characters.</p>
+            <table border="1">
+                <tr>
+                    <th>Steps</th>
+                    <th>Number System</th>
+                    <th>Quotient</th>
+                    <th>Remainder</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>57</td>
+                    <td>7</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>7</td>
+                    <td>0</td>
+                    <td>7</td>
+                </tr>
+            </table>
+            <p>Reading the remainders in reverse order, we get 71.</p>
+            <p>So, the octal equivalent of 57 is 71.</p>              
+        </div>
+        <hr>
+            <div style= "font-size: 20px;">
+                <p>Converting with Remainders (For fractional part)</p>
+            </div>
+            <div>
+            <p>Let's convert the fractional part of the decimal number 0.625 into binary.</p>
+            <p>Multiply by 2:</p>
+            <ul>
+                <li>Start with the fractional part (0.625) and multiply it by the base (2). This gives us 1.25. We record the integer part (1) and keep the fractional part (0.25).</li>
+                <li>Multiply the Fractional Part by 2 Again:</li>                  
+                <li>We take the remaining fractional part (0.25) and multiply it by 2, yielding 0.5. Again, we record the integer part (0) and keep the new fractional part (0.5). </li>
+                <li>Repeat: </li>
+                <li>We continue this process, multiplying the fractional part by 2 each time and recording the integer part until we either reach the desired precision or find a repeating pattern.</li>
+              </ul>
+              <table border="1">
+                <tr>
+                    <th>Steps</th>
+                    <th>Fractional Part</th>
+                    <th>Integer Part</th>
+                    <th>Binary Digit</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>0.625</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>0.25</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>0.5</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+            </table>
+            <p>Example: Converting 0.35 to octal</p>
+            <ol>
+                <li>Multiply the decimal fraction by the base of the target system (octal, so base 8).</li>
+                    <ul><li>0.35×8=2.80.35×8=2.8</li></ul>
+                <li>Write down the integer part of the result (2), and then consider only the fractional part (0.8).</li>
+                <li>Repeat steps 1 and 2 with the fractional part until the fractional part becomes zero or until you have enough digits of precision.</li>
+                <ul><li>0.8×8=6.40.8×8=6.4 --> 6</li>
+                <li>0.4×8=3.20.4×8=3.2 --> 3</li></ul>
+                <li>The process stops when the fractional part becomes zero or when you have enough precision for your needs. In this case, the octal representation of 0.35 is 0.26.</li>
+            </ol>
+            <table border="1">
+                <tr>
+                    <th>Steps</th>
+                    <th>Fractional Part</th>
+                    <th>Result</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>0.35 x 8 = 2.80</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>0.8 x 8 = 6.4 </td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>0.4 x  8 =3.2</td>
+                    <td>3</td>
+                </tr>
+            </table>
+            </div>
+        <hr>
+            <div id="dh" style= "font-size: 20px;">
+                <p>Decimal to Hexadecimal Conversion</p>
+            </div>
+                <p>Hexadecimal, with a base of 16, uses digits from 0 to 9 and A to F (representing 10 to 15). It's handy for memory addresses.</p>
+            
+        <hr>
+            <div style= "font-size: 20px;">
+                <p>To convert a decimal number to hexadecimal:</p>
+            <ol>
+                <li>Divide the Decimal Number by 16: Start by dividing the decimal number by 16. Note the quotient and the remainder.</li>
+                <li>Repeat Division: Continue dividing the quotient by 16 until the quotient becomes 0. Each time, note the remainder.</li>
+                <li>Convert Remainders to Hexadecimal Digits: For remainders greater than 9, use the corresponding hexadecimal letters (A, B, C, D, E, F).</li>
+                <li>Write Remainders in Reverse Order: Once the quotient becomes 0, write down the remainders in reverse order. This gives you the hexadecimal equivalent of the decimal number.</li>
+            </ol>
+            <div style="overflow: auto;">
+                <table border="1">
+                    <tr>
+                        <th>Steps</th>
+                        <th>Decimal Number</th>
+                        <th>Quotient</th>
+                        <th>Remainder</th>
+                        <th>Hexadecimal Digit</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>314</td>
+                        <td>19</td>
+                        <td>A</td>
+                        <td>A</td>         
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>19</td>
+                        <td>1</td>
+                        <td>3</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                </table>
+            </div>
+            <p>Reading the remainders in reverse order, we get 13A.</p>
+            <p>So, the hexadecimal equivalent of 314 is 13A</p>
+        </div>
+        <hr>
+            <div id="da" style= "font-size: 20px;">
+            <p >Adding Decimals -means finding the sum of two or more decimal numbers.</p>    
+            </div>
+
+            <p>Let's add two decimal numbers, 3.25 and 1.75:</p> 
+            <div id="box">
+                <div>
+                    <p>$$\require{enclose}
+                    \begin{array}{r}
+                    3.25  \\[-3pt]
+                    \underline{+ 1.75}  \\[-3pt]
+                    \text{ }& \\
+                    \text{ }& \\
+                    \hphantom{3.25}3.25 & \\
+                    \underline{+ 1.75} & \\
+                    \hphantom{0}0 & \quad \text{(5 + 5 = 10, carry over 1)}
+                    \text{ }& \\
+                    \text{ }& \\
+                    3.25 & \\
+                    \underline{+ 1.75} & \\
+                    \hphantom{5000}500 & \quad \text{(3 + 1 = 4)}
+                    \text{ }& \\
+                    \text{ }& \\
+                    3.25 & \\
+                    \underline{+ 1.75} & \\
+                    \hphantom{5.00}5.00 
+                    \end{array}$$</p>              
+                </div>
+            </div>
+        </div>
+        <hr>
+            <div id="ds" style= "font-size: 20px;">
+            <p>Subtracting Decimals</p></div>    
+            <p>Let's subtract two decimal numbers, 4.25 and 1.75:</p> 
+            <div id="box">
+                <div>
+                    <p>$$\require{enclose}
+                    \begin{array}{r@{\hspace{0.5em}}l}
+                    4.25 & \\
+                    \underline{- 1.75} & \\
+                    \hphantom{0}0 & \quad \text{(5 - 5 = 0)}
+                    \text{ }& \\
+                    \text{ }& \\
+                    4.25 & \\
+                    \underline{- 1.75} & \\
+                    \hphantom{50}50 & \quad \text{(2 - 7, need to borrow)}
+                    \text{ }& \\
+                    \text{ }& \\
+                    4.25 & \\
+                    \underline{- 1.75} & \\
+                    \hphantom{2.50}2.50 & \quad \text{(4 - 1 = 3)}
+                    \text{ }& \\
+                    \text{ }& \\
+                    4.25 & \\
+                    \underline{- 1.75} & \\
+                    \hphantom{2.50}2.50 
+                    \end{array}$$</p>              
+                </div>
+            </div>
+        <hr>
+            <div id="dm" style= "font-size: 20px;">
+            <p>Multiplication Decimals </p></div>    
+            <p>Let's multiply 2.5 and 1.2:</p> 
+            <div id="box"> 
+                <div>
+                    <p>$$\require{enclose}
+                        \begin{array}{r@{\hspace{0.5em}}l}
+                        25 & \\
+                        \underline{\text{x} 12} & \\
+                        \hphantom{50}50 & \quad \text{(25 x 2)}& \\
+                        \underline{+ 250} & \quad \text{(25 x 1, shifted one place to left)}& \\
+                        \hphantom{30}30 & \quad \text{(sum of the two lines)}
+                        \end{array}$$</p>              
+                </div> 
+            </div>    
+        <hr>
+            <div id="dd" style= "font-size: 20px;">
+            <p>Division Decimals Division with decimals is similar to division with whole numbers but requires careful attention to decimal placement.</p>    
+            </div>
+            <p>Set up the division problem:</p> 
+            <div id="box"> 
+                <div>
+                    <p>$$\require{enclose}
+                        \begin{array}{r@{\hspace{0.5em}}l}
+                        8.75 & \\
+                        {\text &divide; 0.25} & \\
+                        \end{array}$$</p>              
+                </div> 
+            </div> 
+            <p>Ignore the decimals temporarily: Pretend both numbers are whole numbers and perform the division ignoring the decimals. So, in this case, divide 875 by 25.</p>
+            <div id="box"> 
+                <div>
+                    <p>$$\require{enclose}
+                        \begin{array}{r@{\hspace{0.5em}}l}
+                        35  & \\
+                        25 \enclose{longdiv}{875} & \\
+                        \underline{-75}\phantom{2} & \\
+                        175  & \\
+                        \underline{-175} & \\
+                        0 & \\
+                        \end{array}$$</p>              
+                </div> 
+            </div> 
+            <p>Bring back the decimal: Count the total number of decimal places in both the dividend and the divisor</p>
+            <div id="box"> 
+                <div>
+                    <p>$$\require{enclose}
+                        \begin{array}{r@{\hspace{0.5em}}l}
+                        8.75 & \\
+                        {\text &divide; 0.25} & \\
+                        \end{array}$$</p>              
+                </div> 
+            </div> 
+            <p>In this case, we can multiply both the dividend and divisor by 100 to move the decimal points two places to the right:</p>
+            <div id="box"> 
+                <div>
+                    <p>$$\require{enclose}
+                        \begin{array}{r@{\hspace{0.5em}}l}
+                        875 & \\
+                        {\text &divide; 25} & \\
+                        \end{array}$$</p>              
+                </div> 
+            </div> 
+            <p>Now, divide as if both numbers are whole numbers.</p>
+            <div id="box"> 
+                <div>
+                    <p>$$\require{enclose}
+                        \begin{array}{r@{\hspace{0.5em}}l}
+                        35  & \\
+                        25 \enclose{longdiv}{875} & \\
+                        \underline{-75}\phantom{2} & \\
+                        175  & \\
+                        \underline{-175} & \\
+                        0 & \\
+                        \end{array}$$</p>              
+                </div> 
+            </div> 
+            <p>Count the total decimal places in both numbers, then place the decimal point in the quotient to match the difference between the decimal places in the dividend and divisor.</p>
+            <div id="box"> 
+                <div>
+                    <p>$$\require{enclose}
+                        \begin{array}{r@{\hspace{0.5em}}l}
+                        {8.75  \text &divide; 0.25= 35} & \\
+                        \end{array}$$</p>              
+                </div> 
+            </div> 
+            </div>    
+        </div>
+     </div>
+     
+    </div>
+</div>
+
+
+</body>
+
+<script>
+
+    const side = document.getElementById('sideID');
+    const navbar = document.getElementById('navbarID');
+    const hamburger = document.getElementById('hamburgerID');
+    const menuList = document.getElementById('menuList');
+    const test = document.getElementById('testtt');
+    
+    var countSidebar = 0;
+    function popOutSidebar(){
+        
+        countSidebar %= 2;
+        if (countSidebar === 0){
+            side.style.display = "block";
+            countSidebar++;
+        }
+        else if (countSidebar===1){
+            side.style.display = "none";
+            countSidebar++;
+        }
+    }
+
+    var countMenu = 0;
+    function popOutMenu(){
+        countMenu %= 2;
+        if (countMenu === 0){
+            test.style.display = "block";
+            countMenu++;
+        }
+        else if (countMenu===1){
+            test.style.display = "none";
+            countMenu++;
+        }
+    }
+
+
+
+</script>
+</html>

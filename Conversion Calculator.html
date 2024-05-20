@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Conversion Calculator</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<style>
+     *{
+        font-family: "Exo 2", sans-serif;
+        color: #dddddd;
+    }
+
+    body{
+        margin: 0;
+        overflow-x: hidden;
+        background-color: #212125;
+    }
+
+    .header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid black; 
+        
+        height: 100px;
+        width: 100%;
+        position: sticky;
+        top: 0;
+        background-color: #212125;
+        z-index: 5;
+    }
+
+    .header a{
+        display: inline-block;
+        height: 100%;
+    }
+    .header img{
+        margin-left: 15%;
+        object-fit: cover;
+        height: 100%;
+    }
+    .bar{
+        display: flex;
+        text-align: center;
+        margin-left: 42%;
+    }
+    .bar a{
+        text-decoration: none;
+        line-height: 28px;
+        font-size: 20px;
+        padding: 11px 55px;
+        
+    }
+    .active{
+        background-color: #239D60;
+    }
+    .middle{
+        display: flex;
+        justify-content: space-around;
+        margin: auto;
+        margin-top: 5%;
+        margin-bottom: 3%;
+    }
+    .arithmetic-calculator{
+        width: 667px;
+        height: 800px;
+        background-color:#212125;
+        border: 1px solid #239D60;
+        
+    }
+    .arithmetic-calculator p{
+        font-size: 33px;
+    }
+    .table{
+        margin-left: 10%;
+        margin-top: 6%;
+    }
+
+    .space-end{
+        padding-bottom: 40px;
+    }
+    .table p{
+        font-size: 21px;
+        margin: 7px;
+    }
+    .table input{
+        width: 10rem;
+        height: 1.6rem;
+    }
+    .table select{
+        width: 10.5rem;
+        height: 1.6rem;
+    }
+    .table button{
+        width:106px;
+        height: 24px;
+        font-size: 18px;
+    }
+
+    select, input{
+        color: black;
+        font-size:medium;
+    }
+    .right-div{
+        width: 398px;
+        height: auto;
+        margin-left: -35%;
+        background-color:#239D60;
+        
+    }
+    .right-div p{
+        font-size: 24px;
+        text-align: center;
+    }
+    .right-div li{
+        line-height: 1.6rem;
+        
+    }
+
+    
+    .right-div ul{
+        list-style-image: url("bullet.png");
+        list-style-position: inside;
+        font-size: 20px;
+        margin-left: -3%;
+        margin-left: 2px;
+        padding-bottom: 10%;  
+     
+    }
+    .right-div a{
+        text-decoration: none;
+    }
+
+    .right-div a:hover{
+        background-color: #56af83;
+    }
+    #binCalc td{
+            width: 100px;
+        }
+
+    .left-div{
+        padding: 4em;
+        border: solid 1px #239D60;
+    }    
+
+
+    
+
+    .right-div ul ul li{
+        list-style-type: none;
+        list-style-image: url();
+        font-size: 18px;
+        margin-left: -6%;
+    }
+    .right-div ul ul li:before {
+        content: '⬢';
+        color: black;
+        margin-right: 8px;
+        font-size: 14px;
+    }
+    @media screen and (max-width: 1800px) {
+        body{
+            overflow-x: hidden;
+        }
+        .header{
+                height: 90px;
+        }
+        .bar a{
+            font-size: 18px;
+        }
+        .right-div {
+            margin-left: -15%;
+            height: auto;
+        }
+    }
+    @media screen and (max-width: 500px) {
+        .header{
+            flex-direction: column;
+            height: 190px;
+            width: 400px;
+            align-items:center;
+            overflow: hidden;
+            overflow-x: hidden;
+        }
+        .header img{
+            margin-left: 14%;
+            height: 100%;
+        }
+        .header .bar{
+            margin-left: 0px;
+            text-align: center;
+        }
+        .bar a{
+            text-decoration: none;
+            padding: 11px 55px;
+            font-size: 18px;
+            line-height: 28px;
+        }
+        .middle{
+            overflow-x: hidden;
+        }
+        .arithmetic-calculator{
+            width: 340px;
+            height: 760px;
+            margin-left: 4%;
+        }
+        .table{
+            margin-left: 2px;
+        }
+        .space-end{
+        padding-bottom: 15px;
+        }
+        .right-div{
+            transform: translate(-37px);
+        }
+        
+    }
+    @media screen  and (max-width: 390px) {
+        .header img{
+            margin-left: 10px;
+        }
+        .arithmetic-calculator{
+            margin-left: 0;
+            width: 320px;
+            height: 800px;
+        }
+    }
+    @media screen and (max-width: 1050px) {
+        .bar{
+            margin-left: 30%;
+        }
+        .bar a{
+            padding: 5px 30px;
+        }
+        .middle{
+            flex-direction: column;
+            margin-left: 8%;
+        }
+        .right-div{
+            margin-top: 5%;
+            margin-left: 1%;
+        }
+    }
+    @media screen and (max-height: 1400px) and (max-width: 1050px) and (min-height: 700px) and (min-width: 750px) {
+        .bar{
+            border: 2px black;
+            margin-left: 23%;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="header">
+        <div class="logoPlace">
+            <div>
+                <a href="index.html"><img src="nexum_logo_full.png" id="logoFull" style="height: 100px; width: auto;" ></a>
+
+            </div>
+    </div>
+       <a href="Homepage.html"></a>
+        <div class="bar">
+            <a href="Conversion Calculator.html" style="border-right: 2px solid"class="active">Conversion <br> Calculator</a>
+            <a href="Arithmetic Calculator.html" style="border-right: 2px solid" >Arithmetic <br> Calculator</a>
+            <a href="#">Lessons & <br> Exercises</a>
+        </div>    
+    </div>
+    
+    <div class="middle">
+        <div class="left-div">
+            <div class="conversion-calculator">
+                <p>Number System Conversion Calculator</p>
+                <table>
+                    <tr>
+                        <td><p>Decimal</p></td>
+                        <td><input type="text" id="decnum" placeholder="Enter your number here"></td>
+                    </tr>
+                    <tr>
+                        <td><p>Binary</p></td>
+                        <td><input type="text" id="binnum" placeholder="Enter your number here"></td>
+                    </tr>
+                    <tr>
+                        <td><p>Octal</p></td>
+                        <td><input type="text" id="octnum" placeholder="Enter your number here"></td>
+                    </tr>
+                    <tr>
+                        <td><p>Hexadecimal</p></td>
+                        <td><input type="text" id="hexanum" placeholder="Enter your number here"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="calculations-div">
+                <p style="text-align: center;">Calculations</p>
+                <p class="number-system">Decimal</p>
+                <p id="decCalc"></p>
+                <p class="number-system">Binary</p>
+                <table id="binCalc"></table>
+                <p class="number-system">Octal</p>
+                <table id="octCalc"></table>
+                <p class="number-system">Hexadecimal</p>
+                <table id="hexaCalc"></table>
+            </div>
+        </div>
+        <div class="right-div">
+            <p>Number Conversion Topics</p>
+            <ul>
+                <li>Introduction to Number Systems</li>
+                <li>Decimal
+                    <ul>
+                        <li><a href="Decimal Lesson.html#">Definition and Base</a></li>
+                        <li><a href="Decimal Lesson.html#db">Decimal to Binary</a></li>
+                        <li><a href="Decimal Lesson.html#do">Decimal to Octal</a></li>
+                        <li><a href="Decimal Lesson.html#dh">Decimal to Hexadecimal</a></li>
+                    </ul>
+                </li>
+                <li>Binary
+                    <ul>
+                        <li><a href="Binary Lesson.html#">Definition and Base</a></li>
+                        <li><a href="Binary Lesson.html #bdc">Binary to Decimal</a></li>
+                        <li><a href="Binary Lesson.html #bo">Binary to Octal</a></li>
+                        <li><a href="Binary Lesson.html #bh">Binary to Hexadecimal</a></li>
+                    </ul>
+                </li>
+                <li>Octal
+                    <ul>
+                        <li><a href="Octal Lesson.html#">Definition and Base</a></li>
+                        <li><a href="Octal Lesson.html#odc">Octal to Decimal</a></li>
+                        <li><a href="Octal Lesson.html#ob">Octal to Binary</a></li>
+                        <li><a href="Octal Lesson.html#oh">Octal to Hexadecimal</a></li>
+                    </ul>
+                </li>
+                <li>Hexadecimal
+                    <ul>
+                        <li><a href="Hexadecimal Lesson.html#">Definition and Base</a></li>
+                        <li><a href="Hexadecimal Lesson.html#h-toDec">Hexadecimal to Decimal</a></li>
+                        <li><a href="Hexadecimal Lesson.html#h-toBin">Hexadecimal to Binary</a></li>
+                        <li><a href="Hexadecimal Lesson.html#h-toOct">Hexadecimal to Octal</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+</body>
+<script>
+    const decNumInput = document.getElementById('decnum');
+    const binNumInput = document.getElementById('binnum');
+    const octNumInput = document.getElementById('octnum');
+    const hexaNumInput = document.getElementById('hexanum');
+    const binCalculations = document.getElementById('binCalc');
+    const octCalculations = document.getElementById('octCalc');
+    const decCalculations = document.getElementById('decCalc');
+    const hexaCalculations = document.getElementById('hexaCalc');
+    
+    
+    
+    let decArray, binArray, octArray, hexaArray;
+    
+    /*
+    Here, both output and calculations are store in an array Ex. [1, "2 x 10^0" ]
+    */
+    
+    decNumInput.addEventListener('input', function(event) {                     // Used para icheck every time may 'input' ang user
+        
+        binArray = decimalToChosen(decNumInput.value, 2)                        // nagrereturn ng array yung function at sinesave sa 'binArray'
+        binNumInput.value = binArray[0];                                        // binary input field <-- converted value (dec to bin)
+        binCalculations.innerHTML = binArray[1];                                // binary calculations 
+    
+        octArray = decimalToChosen(decNumInput.value, 8);                       // nagrereturn ng array yung function at sinesave sa 'octArray'
+        octNumInput.value = octArray[0];                                        // octal input field <-- converted value (dec to oct)
+        octCalculations.innerHTML = octArray[1];                                // octal calculations
+    
+        hexaArray = decimalToChosen(decNumInput.value, 16)                      // nagrereturn ng array yung function at sinesave sa 'hexaArray'
+        hexaNumInput.value = hexaArray[0];                                      // hexa input field <-- converted value (dec to hexa)
+        hexaCalculations.innerHTML = hexaArray[1];                              // hexa calculations
+    });
+    
+    binNumInput.addEventListener('input', function(event) {
+    
+        decArray = toDecimal(binNumInput.value, 2, /^[01]+(\.[01]+)?$/);        // binary input is converted to decimal
+        decNumInput.value = decArray[0];                                        // decimal input field <-- converted value (bin to dec)
+        decCalculations.innerHTML = decArray[1];                                // bin to dec calculations
+    
+        octArray = decimalToChosen(decNumInput.value, 8);          // uses the decimal (converted) to convert to octal (bin -> dec -> octal)
+        octNumInput.value = octArray[0];                                        // octal input field <-- octal (converted value) 
+        octCalculations.innerHTML = octArray[1];                                // bin to octal calculations
+    
+        hexaArray = decimalToChosen(decNumInput.value, 16);   // uses the decimal to convert to hexadecimal (bin -> dec -> hexadecimal)
+        hexaNumInput.value = hexaArray[0];                                      // hexa field <-- hexa value
+        hexaCalculations.innerHTML = hexaArray[1];                              // bin to hexa calculations
+    });
+    
+    octNumInput.addEventListener('input', function(event) {
+    
+        decArray = toDecimal(octNumInput.value, 8, /^[0-7]+(\.[0-7]+)?$/);                 // Convert octal to decimal
+        decNumInput.value = decArray[0];
+        decCalculations.innerHTML = decArray[1];
+    
+        binArray = decimalToChosen(decNumInput.value, 2)                        // oct -> dec -> bin
+        binNumInput.value = binArray[0];
+        binCalculations.innerHTML = binArray[1];
+    
+        hexaArray = decimalToChosen(decNumInput.value, 16)                      // oct -> dec -> hexa 
+        hexaNumInput.value = hexaArray[0];
+        hexaCalculations.innerHTML = hexaArray[1];
+    
+    });
+    
+    hexaNumInput.addEventListener('input', function(event) {
+    
+        decArray = toDecimal(hexaNumInput.value, 16, /^[0-9A-Fa-f.]+$/);        // Convert hexadecimal to decimal
+        decNumInput.value = decArray[0];
+        decCalculations.innerHTML = decArray[1];
+    
+        binArray = decimalToChosen(decNumInput.value, 2)                       // hexa -> dec -> bin
+        binNumInput.value = binArray[0];
+        binCalculations.innerHTML = binArray[1];
+   
+        octArray = decimalToChosen(decNumInput.value, 8)                       // hex -> dec -> oct
+        octNumInput.value = octArray[0];
+        octCalculations.innerHTML = octArray[1];
+    });
+    
+    
+    
+    function decimalToChosen(num, numbase){
+        let rem = 0;
+        let whole = Math.floor(num);
+        let fracPart = num - whole;
+        let result = "";
+        let calc = '<tr> <th>Division</th> <th>Quotient</th> <th>Remainder</th><th>Digit#</th> </tr>';
+        let resultArray = ["", ""];
+        let iterationCount = 0;
+        
+        let fracArray = ["", ""];
+        let fracNumberResult = "";
+        let fracCalcResult = "";
+
+        if (num === 0) {
+            return "0";
+        }
+    
+        while (whole > 0) {
+            rem = whole % numbase;
+            let quo = Math.floor(whole / numbase);
+
+            calc += Calculations(whole, numbase, quo, rem, iterationCount )
+
+            whole = Math.floor(whole / numbase);
+            if (numbase == 16){
+                rem = numberHexEquivalent(rem.toString());
+            }
+            result = rem + result;
+             
+            iterationCount++;
+        }
+    
+        if (fracPart > 0) // handles fractional part (if there's any)
+            {
+                // result += "." + convertFracPart(fracPart, numbase);  
+               fracArray = convertFracPart(fracPart, numbase);
+               fracNumberResult = "." + fracArray[0];
+               fracCalcResult = fracArray [1];  
+            }
+    
+        resultArray[0] = result + fracNumberResult;
+        if (num != ""){
+        resultArray[1] = calc + '<tr><td> = (' + result + ')<sub>'+ numbase +'</sub></td></tr>' + '<br>' + fracCalcResult;
+        }
+        else{
+            resultArray[1] = "";
+        }
+        return resultArray;
+    
+    }
+
+    function Calculations(whole, numbase, quo, rem, count){
+            let rs="";  
+                    rs +='<tr><td>' +   whole + '/' + numbase + '</td> <td>' + quo + '</td> <td>' + rem + '</td> <td>' + count + '</td></tr>';
+            return rs;    
+        }
+
+    function CalculationsFracPart(fracPart, numbase, decimalPart, rem){
+            let rs = "";
+                    rs += '<tr><td>' +  fracPart.toFixed(2)  + ' x ' + numbase + ' = ' + decimalPart.toFixed(2) + ' + ' + rem + '</td></tr>';
+            return rs;        
+    }    
+    
+    function convertFracPart(num, numbase) {
+        let precision = 10; // how many decimals will be (Ex. 0.1232456789)
+        let rem = 0;
+        let numberResult = "";
+        let calcResult = "";
+        
+        while (precision > 0 && num > 0) {
+            let product = num;
+            num *= numbase; // 0.45 x 8 = 3.6
+            rem = Math.floor(num); //  3. 6 - > 3
+            calcResult += CalculationsFracPart(product, numbase, num-rem, rem);
+
+            num -= rem; // 3.6 - 3 -> 0.6 = 
+            
+            if (numbase === 16){  
+              rem = numberHexEquivalent(rem.toString());
+            }
+            numberResult += rem;
+            precision--;
+        }
+        return [numberResult, calcResult];
+    }
+ 
+        function toDecimal(numStr, base, baseRegex){ //converting from other NS to Decimal NS
+            if (numStr === "") {
+            return ["", ""]; // Return default values
+            }
+            
+            let decimalNumber = 0;
+            let power = 0;
+            let wholeFormula="";
+            let fracFormula = "";
+            let finalFormula ="";
+            let iterationCount = 0;
+
+           //   let num = parseFloat(numStr);
+          //  let parts = numStr.split('.');
+             
+           numStr = numStr.toString();
+           let parts = numStr.split('.'); // dividing into two parts 
+            
+    
+            if (baseRegex.test(numStr)){
+
+        /*        
+            let i = 0;
+            let power = parts[0].length;
+            console.log("power: " + power);
+
+            while(i < numStr.length ){
+                power--;
+                let digit = base != 16 ? numStr[i] : letterHexEquivalent(numStr[i]);
+                digit = parseInt(digit);
+
+                console.log("digit: " + digit)
+                decimalNumber += digit * Math.pow(base, power);
+                console.log("decimal number " + decimalNumber);
+                i++;     
+                }  
+            return [decimalNumber, ""];
+                
+
+*/
+
+                
+                
+                // check if the input is valid for the chosen ns (Ex. 10102 can't be binary)
+                for (let i = parts[0].length - 1; i >= 0; i--) {
+                        let digit = parseInt(parts[0][i]);
+                            if (base == 16){
+                                digit = parseInt(letterHexEquivalent(parts[0][i]));
+                            }
+    
+                        decimalNumber += digit * Math.pow(base, power);
+                        wholeFormula = `(${digit} × ${base}<sup>${power}</sup>) + ${wholeFormula}`;
+                          
+                        power++;
+                }
+                if (parts.length > 1) {
+                    power = -1;
+                        for (let i = 0; i < parts[1].length; i++) {
+                            let digit = parseInt(parts[1][i]);
+    
+                                if (base == 16){
+                                digit = parseInt(letterHexEquivalent(parts[1][i]));
+                                }
+    
+                            decimalNumber += digit * Math.pow(base, power);
+                            fracFormula = `${fracFormula} + (${digit} × ${base}<sup>${power}</sup>)`;
+                            power--;
+                        }            
+                }
+                wholeFormula = wholeFormula.slice(0, -2); // remove +
+                finalFormula = `(${numStr})<sub>${base}</sub> = ${wholeFormula} ${fracFormula} = (${decimalNumber})<sub>10</sub>`; // Final formula representation
+                return [decimalNumber, finalFormula]; // Return an array containing decimalNumber and formula
+                
+            }
+            else{
+               return ["", ""];
+            }
+        }
+
+    
+
+
+
+    
+        function numberHexEquivalent(rem) {
+            switch (rem) {
+                case "10": return "A";
+                case "11": return "B";
+                case "12": return "C";
+                case "13": return "D";
+                case "14": return "E";
+                case "15": return "F";
+                default: return rem; 
+            }
+        }     
+    
+        function letterHexEquivalent(hex){
+            switch (hex.toUpperCase()) {
+                    case "A": return "10";
+                    case "B": return "11";
+                    case "C": return "12";
+                    case "D": return "13";
+                    case "E": return "14";
+                    case "F": return "15";
+                    default: return hex; 
+            }   
+        }
+    
+    
+    
+    
+</script>
+</html>

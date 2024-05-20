@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Nexum - Number Hub</title>
+    <style>
+    *{
+        color: #dddddd;
+    }
+
+    h2{
+        
+    }
+    
+    p{
+        font-family: "Exo 2", sans-serif;
+
+    }
+    body{
+        margin: 0;
+        overflow-x: hidden;
+        background-color: #212125;
+    }
+
+        .main{
+            height: 100%;
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+        }
+        .top{
+            height: 360px;
+            
+        }
+        .box-directory{
+            display: flex;
+            background-color: #dddddd;
+            border: 1px solid black; 
+            height: 20rem;
+            width: 17rem;
+            margin-left: 2%; 
+            align-items: center;
+            position: relative;
+        }
+        .bot{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        .box-directory p{
+            color: black;
+            position: absolute;
+            padding-bottom: 20px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: 0;
+        }
+        .box-directory img{
+            width: 65%;
+            height: 55%;
+            margin-left: -0.3em;
+
+        }
+        .top h2{
+            font-size: 130px;
+            margin-bottom: 0px;
+        }
+        .top p{
+            font-size: 24px;
+            margin-top: 0px;
+        }
+        
+        @media screen and (max-width: 1800px) {
+            .top {
+                height: 340px;
+            }
+            .box-directory {
+                height:15rem;
+                width: 12rem;
+            }
+        }
+        @media screen and (max-width: 500px) {
+            .main{
+                width: 700px;
+            }
+            .top h2 {
+                margin-top: 50px;
+                font-size: 80px;
+                margin-bottom: 0%;
+            }
+            .paragraph{
+                width: 400px;
+            }
+            .top p{
+                font-size: 4px;
+                margin-left: 50px;
+            }
+            .top{
+                height: 200px;
+
+            }
+            .bot{
+                margin-top: 9em;
+                margin-left: 22em;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .box-directory{
+                height: 11rem;
+                width: 50px;
+                margin-bottom: 20px;
+                margin-left: -300px;
+            }
+        }
+        @media screen and (max-width: 1050px) {
+            .top h2 {
+                margin-top: 50px;
+                font-size: 110px;
+                margin-bottom: 0%;
+            }
+            .top p{
+                font-size: 20px;
+            }
+            .top{
+                height: 230px;
+            }
+            .box-directory{
+                height: 15rem;
+                width: 12rem;
+                margin-bottom: 20px;
+            }
+        }
+        @media screen and (max-height: 1400px) and (max-width: 1050px) and (min-height: 700px) and (min-width: 750px) {
+            .top h2 {
+                margin-top: 120px;
+                font-size: 180px;
+                margin-bottom: 0%;
+            }
+            .top p{
+                font-size: 33px;
+            }
+            .top{
+                height: 450px;
+            }
+            .box-directory{
+                height: 25rem;
+                width: 15rem;
+                font-size: 40px;
+            }
+        }
+
+    </style>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main" style="margin-top: 65px;"> 
+        <div class="top">
+            <center><img src="nexum_logo_full.png" style="width: auto; height: 300px;"></center>
+            <div id="paragraph"><p style="margin-top: -20px;">A one stop number system learning hub</p></div>
+        </div>
+        <div class="bot"> 
+            <div class="box-directory"><a href="Conversion Calculator.html"><img src="convert_icon.png" alt=""><p>Conversion Calculator</p></a></div>
+            <div class="box-directory"><a href="Arithmetic Calculator.html"><img src="pi_icon.png" alt=""><p>Arithmetic Calculator</p></a></div>
+            <div class="box-directory"><a href="NumberSystems.html"><img src="gear_icon.png" alt=""><p>Lessons & Exercises</p></a></div>
+        </div>
+    </div>
+</body>
+</html>

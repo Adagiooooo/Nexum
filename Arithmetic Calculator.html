@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic Calculator</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        overflow-x: hidden;
+    }
+
+    .header{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid black; 
+        height: 100px;
+        width: 100%;
+    }
+
+    .header a{
+        display: inline-block;
+        height: 100%;
+    }
+    .header img{
+        margin-left: 15%;
+        object-fit: cover;
+        height: 100%;
+    }
+    .bar{
+        display: flex;
+        text-align: center;
+        margin-left: 42%;
+    }
+    .bar a{
+        text-decoration: none;
+        line-height: 28px;
+        font-size: 20px;
+        padding: 11px 55px;
+        color: white;
+    }
+    .active{
+        background-color: blanchedalmond;
+    }
+    .middle{
+        display: flex;
+        justify-content: space-around;
+        margin: auto;
+        margin-top: 5%;
+        margin-bottom: 3%;
+    }
+    .arithmetic-calculator{
+        width: 667px;
+        height: 800px;
+        border: 1px solid black;
+    }
+    .arithmetic-calculator p{
+        font-size: 33px;
+    }
+    .table{
+        margin-left: 10%;
+        margin-top: 6%;
+    }
+
+    .space-end{
+        padding-bottom: 40px;
+    }
+    .table p{
+        font-size: 21px;
+        margin: 7px;
+    }
+    .table input{
+        width: 10rem;
+        height: 1.6rem;
+    }
+    .table select{
+        width: 10.5rem;
+        height: 1.6rem;
+    }
+    .table button{
+        width:106px;
+        height: 24px;
+        font-size: 18px;
+    }
+    .right-div{
+        width: 398px;
+        height: 725px;
+        margin-left: -35%;
+    }
+    .right-div p{
+
+        font-size: 24px;
+    }
+    .right-div li{
+        line-height: 1.6rem;
+    }
+    .right-div ul{
+        list-style-image: url("bullet.png");
+        list-style-position: inside;
+        font-size: 20px;
+        margin-left: -3%;
+        margin-left: 2px;
+        padding-bottom: 10%;    
+    }
+    .right-div ul ul li{
+        list-style-type: none;
+        list-style-image: url();
+        font-size: 18px;
+        margin-left: -6%;
+    }
+    input,select, option,button {
+        color: black;
+    }
+    .right-div ul ul li:before {
+        content: '⬢';
+        margin-right: 8px;
+        font-size: 14px;
+    }
+    @media screen and (max-width: 1800px) {
+        body{
+            overflow-x: hidden;
+        }
+        .header{
+                height: 90px;
+        }
+        .bar a{
+            font-size: 18px;
+        }
+        .right-div {
+            margin-left: -15%;
+            height: auto;
+        }
+    }
+    @media screen and (max-width: 500px) {
+        .header{
+            flex-direction: column;
+            height: 150px;
+            align-items:center;
+            overflow: hidden;
+            overflow-x: hidden;
+        }
+        .header img{
+            margin-left: 0px;
+            height: 80px;
+            border: 2px solid black;
+        }
+        .header .bar{
+            margin-left: 0px;
+        }
+        .bar a{
+            padding: 2px 20px;
+            font-size: 15px;
+            line-height: 20px;
+        }
+        .middle{
+            overflow-x: hidden;
+        
+        }
+        .arithmetic-calculator{
+            width: 340px;
+            height: 760px;
+            margin-left: 4%;
+        }
+        .table{
+            margin-left: 2px;
+        }
+        .space-end{
+        padding-bottom: 15px;
+        }
+    }
+    @media screen  and (max-width: 390px) {
+        .header img{
+            margin-left: 10px;
+        }
+        .arithmetic-calculator{
+            margin-left: 0;
+            width: 320px;
+            height: 800px;
+        }
+    }
+    @media screen and (max-width: 1050px) {
+        .bar{
+            margin-left: 30%;
+        }
+        .bar a{
+            padding: 5px 30px;
+        }
+        .middle{
+            flex-direction: column;
+            margin-left: 8%;
+        }
+        .right-div{
+            margin-top: 5%;
+            margin-left: 1%;
+        }
+    }
+    @media screen and (max-height: 1400px) and (max-width: 1050px) and (min-height: 700px) and (min-width: 750px) {
+        .bar{
+            border: 2px black;
+            margin-left: 23%;
+        }
+    }
+</style>
+<body>
+    <div class="header">
+       <a href="index.html"><img src="nexum_logo_full.png" alt=""></a>
+        <div class="bar">
+            <a href="Conversion Calculator.html" style="border-right: 2px solid black;">Conversion <br> Calculator</a>
+            <a href="Arithmetic Calculator.html" style="border-right: 2px solid black;" class="active">Arithmetic <br> Calculator</a>
+            <a href="#">Lessons & <br> Exercises</a>
+        </div>    
+    </div>
+    <div class="middle">
+        <div class="arithmetic-calculator">
+            <p style="text-align: center;">Number System Arithmetic Calculator</p>
+            <table class="table">
+                <tr>
+                    <td><p>Select bases:</p></td>
+                </tr>
+                <tr>
+                    <td><p>First Number</p></td>
+                    <td><select id="firstBase">
+                        <option hidden>Select a base</option>
+                        <option value="10">Decimal</option>
+                        <option value="2">Binary</option>
+                        <option value="8">Octal</option>
+                        <option value="16">Hexadecimal</option>
+                      </select></td>
+                </tr>
+                <tr >
+                    <td class="space-end"><p>Second Number</p></td>
+                    <td class="space-end"><select id="secondBase">
+                        <option hidden>Select a base</option>
+                        <option value="10">Decimal</option>
+                        <option value="2">Binary</option>
+                        <option value="8">Octal</option>
+                        <option value="16">Hexadecimal</option>
+                      </select></td>
+                </tr>
+                </tr>
+                <tr>
+                    <td><p>Compute:</p></td>
+                </tr>
+                <tr>
+                    <td><p>First Number </p></td>
+                    <td><input type="text" id="firstNumber" placeholder="Enter your number here"></td>
+                </tr>
+                <tr>
+                    <td><p>Operation </p></td>
+                    <td><select style="appearance: none;" id="operation">
+                        <option hidden>Select an operation</option>
+                        <option value="add">+</option>
+                        <option value="min">-</option>
+                        <option value="mul">*</option>
+                        <option value="div">/</option>
+                        <option value="mod">%</option>
+                      </select>
+                    </td>
+                </tr>
+                <tr >
+                    <td class="space-end"><p>Second Number </p></td>
+                    <td class="space-end"><input type="text" id="secondNumber" placeholder="Enter your number here"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="space-end"><button onclick="ConvertAll()">Calculate</button></td>
+                </tr>
+                <tr>
+                    <td><p>Results:</p></td>
+                </tr>
+                <tr>
+                    <td><p>Binary </p></td>
+                    <td><input type="text" id="binOutput" readonly style="pointer-events: none;"></td>
+                </tr>
+                <tr>
+                    <td><p>Decimal </p></td>
+                    <td><input type="text" id="decOutput" readonly style="pointer-events: none;"></td>
+                </tr>
+                <tr>
+                    <td><p>Octal </p></td>
+                    <td><input type="text" id="octOutput" readonly style="pointer-events: none;"></td>
+                </tr>
+                <tr>
+                    <td><p>Hexadecimal </p></td>
+                    <td><input type="text" id="hexaOutput" readonly style="pointer-events: none;"></td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="right-div">
+            <p>Number Conversion Topics</p>
+            <ul>
+                <li>Introduction to Number Systems</li>
+                <li>Decimal
+                    <ul>
+                        <li>Definition and Base</li>
+                        <li>Converting to Binary</li>
+                        <li>Converting to Octal</li>
+                        <li>Converting to Hexadecimal</li>
+                    </ul>
+                </li>
+                <li>Binary
+                    <ul>
+                        <li>Definition and Base</li>
+                        <li>Converting to Decimal</li>
+                        <li>Converting to Octal</li>
+                        <li>Converting to Hexadecimal</li>
+                    </ul>
+                </li>
+                <li>Octal
+                    <ul>
+                        <li>Definition and Base</li>
+                        <li>Converting to Decimal</li>
+                        <li>Converting to Binary</li>
+                        <li>Converting to Hexadecimal</li>
+                    </ul>
+                </li>
+                <li>Hexadecimal
+                    <ul>
+                        <li>Definition and Base</li>
+                        <li>Converting to Decimal</li>
+                        <li>Converting to Binary</li>
+                        <li>Converting to Octal</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div> 
+    <script src="conversion.js"></script>
+</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic Calculator</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<style>
+     *{
+        font-family: "Exo 2", sans-serif;
+        color: #dddddd;
+    }
+
+    body{
+        margin: 0;
+        overflow-x: hidden;
+        background-color: #212125;
+    }
+
+    .header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid black; 
+        
+        height: 100px;
+        width: 100%;
+        position: sticky;
+        top: 0;
+        background-color: #212125;
+        z-index: 5;
+    }
+
+    .header a{
+        display: inline-block;
+        height: 100%;
+    }
+    .header img{
+        margin-left: 15%;
+        object-fit: cover;
+        height: 100%;
+    }
+    .bar{
+        display: flex;
+        text-align: center;
+        margin-left: 42%;
+    }
+    .bar a{
+        text-decoration: none;
+        line-height: 28px;
+        font-size: 20px;
+        padding: 11px 55px;
+        
+    }
+    .active{
+        background-color: #239D60;
+    }
+    .middle{
+        display: flex;
+        justify-content: space-around;
+        margin: auto;
+        margin-top: 5%;
+        margin-bottom: 3%;
+    }
+    .arithmetic-calculator{
+        width: 667px;
+        height: 800px;
+        background-color:#212125;
+        border: 1px solid #239D60;
+        
+    }
+    .arithmetic-calculator p{
+        font-size: 33px;
+    }
+    .table{
+        margin-left: 10%;
+        margin-top: 6%;
+    }
+
+    .space-end{
+        padding-bottom: 40px;
+    }
+    .table p{
+        font-size: 21px;
+        margin: 7px;
+    }
+    .table input{
+        width: 10rem;
+        height: 1.6rem;
+    }
+    .table select{
+        width: 10.5rem;
+        height: 1.6rem;
+    }
+    .table button{
+        width:106px;
+        height: 24px;
+        font-size: 18px;
+    }
+
+    select, input{
+        color: black;
+        font-size:medium;
+    }
+    .right-div{
+        width: 398px;
+        height: auto;
+        margin-left: -35%;
+        background-color:#239D60;
+        
+    }
+    .right-div p{
+        font-size: 24px;
+        text-align: center;
+    }
+    .right-div li{
+        line-height: 1.6rem;
+        
+    }
+
+    
+    .right-div ul{
+        list-style-image: url("bullet.png");
+        list-style-position: inside;
+        font-size: 20px;
+        margin-left: -3%;
+        margin-left: 2px;
+        padding-bottom: 10%;  
+     
+    }
+    .right-div a{
+        text-decoration: none;
+    }
+
+    .right-div a:hover{
+        background-color: #56af83;
+    }
+    
+    
+
+    .right-div ul ul li{
+        list-style-type: none;
+        list-style-image: url();
+        font-size: 18px;
+        margin-left: -6%;
+    }
+    .right-div ul ul li:before {
+        content: '⬢';
+        color: black;
+        margin-right: 8px;
+        font-size: 14px;
+    }
+    @media screen and (max-width: 1800px) {
+        body{
+            overflow-x: hidden;
+        }
+        .header{
+                height: 90px;
+        }
+        .bar a{
+            font-size: 18px;
+        }
+        .right-div {
+            margin-left: -15%;
+            height: auto;
+        }
+    }
+    @media screen and (max-width: 500px) {
+        .header{
+            flex-direction: column;
+            height: 150px;
+            align-items:center;
+            overflow: hidden;
+            overflow-x: hidden;
+        }
+        .header img{
+            margin-left: 14%;
+            height: 100%;
+        }
+        .header .bar{
+            margin-left: 0px;
+            text-align: center;
+        }
+        .bar a{
+            text-decoration: none;
+            padding: 11px 55px;
+            font-size: 20px;
+            line-height: 28px;
+        }
+        .middle{
+            overflow-x: hidden;
+        
+        }
+        .arithmetic-calculator{
+            width: 340px;
+            height: 760px;
+            margin-left: 4%;
+        }
+        .table{
+            margin-left: 2px;
+        }
+        .space-end{
+        padding-bottom: 15px;
+        }
+    }
+    @media screen  and (max-width: 390px) {
+        .header img{
+            margin-left: 10px;
+        }
+        .arithmetic-calculator{
+            margin-left: 0;
+            width: 320px;
+            height: 800px;
+        }
+    }
+    @media screen and (max-width: 1050px) {
+        .bar{
+            margin-left: 30%;
+        }
+        .bar a{
+            padding: 5px 30px;
+        }
+        .middle{
+            flex-direction: column;
+            margin-left: 8%;
+        }
+        .right-div{
+            margin-top: 5%;
+            margin-left: 1%;
+        }
+    }
+    @media screen and (max-height: 1400px) and (max-width: 1050px) and (min-height: 700px) and (min-width: 750px) {
+        .bar{
+            border: 2px black;
+            margin-left: 23%;
+        }
+    }
+</style>
+<body>
+    <div class="header">
+        <div class="logoPlace">
+            <div>
+                <img src="nexum_logo_full.png" id="logoFull" style="height: 100px; width: auto;" href="Conversion Calculator.html"></a>
+
+            </div>
+    </div>
+       <a href="Homepage.html"></a>
+        <div class="bar">
+            <a href="Conversion Calculator.html" style="border-right: 2px solid">Conversion <br> Calculator</a>
+            <a href="Arithmetic Calculator.html" style="border-right: 2px solid" class="active">Arithmetic <br> Calculator</a>
+            <a href="#">Lessons & <br> Exercises</a>
+        </div>    
+    </div>
+    <div class="middle">
+        <div class="arithmetic-calculator">
+            <p style="text-align: center;">Number System Arithmetic Calculator</p>
+            <table class="table">
+                <tr>
+                    <td><p>Select bases:</p></td>
+                </tr>
+                <tr>
+                    <td><p>First Number</p></td>
+                    <td><select>
+                        <option hidden>Select a base</option>
+                        <option value="decimal">Decimal</option>
+                        <option value="binary">Binary</option>
+                        <option value="octal">Octal</option>
+                        <option value="hexadecimal">Hexadecimal</option>
+                      </select></td>
+                </tr>
+                <tr >
+                    <td class="space-end"><p>Second Number</p></td>
+                    <td class="space-end"><select>
+                        <option hidden>Select a base</option>
+                        <option value="decimal">Decimal</option>
+                        <option value="binary">Binary</option>
+                        <option value="octal">Octal</option>
+                        <option value="hexadecimal">Hexadecimal</option>
+                      </select></td>
+                </tr>
+                </tr>
+                <tr>
+                    <td><p>Compute:</p></td>
+                </tr>
+                <tr>
+                    <td><p>First Number </p></td>
+                    <td><input type="text" placeholder="Enter your number here"></td>
+                </tr>
+                <tr>
+                    <td><p>Operation </p></td>
+                    <td><select style="appearance: none;">
+                        <option hidden>Select an operation</option>
+                        <option value="add">+</option>
+                        <option value="minus">-</option>
+                        <option value="multiply">*</option>
+                        <option value="divide">/</option>
+                        <option value="modulo">%</option>
+                      </select>
+                    </td>
+                </tr>
+                <tr >
+                    <td class="space-end"><p>Second Number </p></td>
+                    <td class="space-end"><input type="text" placeholder="Enter your number here"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="space-end"><button>Calculate</button></td>
+                </tr>
+                <tr>
+                    <td><p>Results:</p></td>
+                </tr>
+                <tr>
+                    <td><p>Binary </p></td>
+                    <td><input type="text" readonly style="pointer-events: none;"></td>
+                </tr>
+                <tr>
+                    <td><p>Decimal </p></td>
+                    <td><input type="text" readonly style="pointer-events: none;"></td>
+                </tr>
+                <tr>
+                    <td><p>Octal </p></td>
+                    <td><input type="text" readonly style="pointer-events: none;"></td>
+                </tr>
+                <tr>
+                    <td><p>Hexadecimal </p></td>
+                    <td><input type="text" readonly style="pointer-events: none;"></td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="right-div">
+            <p>Number Conversion Topics</p>
+            <ul>
+                <li>Introduction to Number Systems</li>
+                <li>Decimal
+                    <ul>
+                        <li><a href="Decimal Lesson.html#">Definition and Base</a></li>
+                        <li><a href="Decimal Lesson.html#db">Decimal to Binary</a></li>
+                        <li><a href="Decimal Lesson.html#do">Decimal to Octal</a></li>
+                        <li><a href="Decimal Lesson.html#dh">Decimal to Hexadecimal</a></li>
+                    </ul>
+                </li>
+                <li>Binary
+                    <ul>
+                        <li><a href="Binary Lesson.html#">Definition and Base</a></li>
+                        <li><a href="Binary Lesson.html #bdc">Binary to Decimal</a></li>
+                        <li><a href="Binary Lesson.html #bo">Binary to Octal</a></li>
+                        <li><a href="Binary Lesson.html #bh">Binary to Hexadecimal</a></li>
+                    </ul>
+                </li>
+                <li>Octal
+                    <ul>
+                        <li><a href="Octal Lesson.html#">Definition and Base</a></li>
+                        <li><a href="Octal Lesson.html#odc">Octal to Decimal</a></li>
+                        <li><a href="Octal Lesson.html#ob">Octal to Binary</a></li>
+                        <li><a href="Octal Lesson.html#oh">Octal to Hexadecimal</a></li>
+                    </ul>
+                </li>
+                <li>Hexadecimal
+                    <ul>
+                        <li><a href="Hexadecimal Lesson.html#">Definition and Base</a></li>
+                        <li><a href="Hexadecimal Lesson.html#h-toDec">Hexadecimal to Decimal</a></li>
+                        <li><a href="Hexadecimal Lesson.html#h-toBin">Hexadecimal to Binary</a></li>
+                        <li><a href="Hexadecimal Lesson.html#h-toOct">Hexadecimal to Octal</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div> 
+</body>
+</html>
