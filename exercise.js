@@ -12,7 +12,8 @@ var fractionConfirm;
 var firstNoOfDigits,secondNoOfDigits,base,operations;
 var firstDigitQuestion = [];
 var secondDigitQuestion = [];
-
+var randomBase = ["Decimal", "Binary","Octal", "Hexadecimal"];
+var randomOperation = ["Addition", "Subtraction", "Multiplication", "Division"]
 ///numberSystems
 var decimal = ["0","1","2","3","4","5","6","7","8","9"];
 var binary = ["0","1"];
@@ -219,13 +220,26 @@ function startArithmetic(){
     noOfQuestions= parseInt(arithQuestions.value);
     firstNoOfDigits = parseInt(arithFirstNo.value);
     secondNoOfDigits = parseInt(arithSecondNo.value);
+    
+    if(arithfracYes.checked){
+        fractionConfirm = "yes";
+    }
+    else if (arithfracNo.checked){
+        fractionConfirm ="no";
+    }
+
     if (isNaN(noOfQuestions) || isNaN(firstNoOfDigits) || isNaN(secondNoOfDigits)){
         alert("Fill in all the details needed first!");
     }
     else{
     base = givenBase.value;
     operations = operation.value;
-
+    if(base == "Random"){
+        base = randomBase[Math.floor(Math.random() * 4)];
+    }
+    if (operations == "Random"){
+        operations = randomOperation[Math.floor(Math.random() * 4)];
+    }
     if (arithYes.checked){
         timerChoice = "yes";
         timerDuration=parseInt(arithDuration.value);
@@ -233,9 +247,6 @@ function startArithmetic(){
     else if (arithNo.checked){
         timerChoice ="no";
         timerDuration="";
-    }
-    else{
-        alert("Select a timer");
     }
     for(let i=0; i<noOfQuestions; i++){
         firstDigitQuestion[i]="";
@@ -273,7 +284,74 @@ function startArithmetic(){
                    break;
             }
         }
+        if (fractionConfirm == "yes"){
+        firstDigitQuestion[i]+=".";
+        for(let j=0; j<2; j++){
+            switch(base){
+                case "Decimal":
+                firstDigitQuestion[i] += decimal[Math.floor(Math.random() * 10)];
+                break;
+            case "Binary":
+                firstDigitQuestion[i] += binary[Math.floor(Math.random() * 2)];
+                break;
+            case "Octal":
+                firstDigitQuestion[i] += octal[Math.floor(Math.random() * 7)];
+                break;
+            case "Hexadecimal":
+                firstDigitQuestion[i] += hexadecimal[Math.floor(Math.random() * 15)];
+                break;
+            }
+        }
+        secondDigitQuestion[i]+=".";
+        for(let k=0; k<2; k++){
+            switch(base){
+                case "Decimal":
+                    secondDigitQuestion[i] += decimal[Math.floor(Math.random() * 10)];
+                    break;
+                case "Binary":
+                    secondDigitQuestion[i] += binary[Math.floor(Math.random() * 2)];
+                    break;
+                case "Octal":
+                    secondDigitQuestion[i] += octal[Math.floor(Math.random() * 7)];
+                    break;
+                case "Hexadecimal":
+                    secondDigitQuestion[i] += hexadecimal[Math.floor(Math.random() * 15)];
+                   break;
+            }
+        }
+        //answer
+        var ans;
         switch(base){
+            case "Decimal": 
+                var firstDecimalNumber = parseFloat(firstDigitQuestion[i]);
+                var secondDecimalNumber = parseFloat(secondDigitQuestion[i]);
+                ans = arithmeticSolve(operations,firstDecimalNumber, secondDecimalNumber);
+                answers[i] = fix(ans);
+                break;
+            case "Binary":
+                var firstBinaryNumber = parseInt(firstDigitQuestion[i].replace(".", ""), 2) / (Math.pow(2, 2));
+                var secondBinaryNumber = parseInt(secondDigitQuestion[i].replace(".", ""), 2) / (Math.pow(2, 2));
+                ans = arithmeticSolve(operations, firstBinaryNumber, secondBinaryNumber).toString(2);
+                answers[i] = fix(ans);
+                break;
+            case "Octal":
+                var firstOctalNumber = parseInt(firstDigitQuestion[i].replace(".", ""), 8) / (Math.pow(8, 2));
+                var secondOctalNumber = parseInt(secondDigitQuestion[i].replace(".", ""), 8) / (Math.pow(8, 2));
+                ans = arithmeticSolve(operations, firstOctalNumber, secondOctalNumber).toString(8);
+                answers[i] = fix(ans);
+                break;
+            case "Hexadecimal":
+                var firstHexadecimalNumber = parseInt(firstDigitQuestion[i].replace(".", ""), 16) / (Math.pow(16, 2));
+                var secondHexadecimalNumber = parseInt(secondDigitQuestion[i].replace(".", ""), 16) / (Math.pow(16, 2));
+                ans = arithmeticSolve(operations, firstHexadecimalNumber, secondHexadecimalNumber).toString(16).toUpperCase();
+                answers[i] = fix(ans);
+                break;
+        }
+    }
+
+
+        else{
+            switch(base){
             case "Decimal": 
                 answers[i] = arithmeticSolve(operations, parseInt(firstDigitQuestion[i]), parseInt(secondDigitQuestion[i])).toString(10);
                 break;
@@ -293,6 +371,8 @@ function startArithmetic(){
                 answers[i] = arithmeticSolve(operations, num1, num2).toString(16).toUpperCase();
                 break;
         }
+        }
+        
 
     }
     localStorage.setItem('title',title);
