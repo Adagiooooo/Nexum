@@ -1000,10 +1000,12 @@
            }
            function nextButton(){
                userAnswers[questionNumber] = userAnswer.value;
+               
                questionNumber++;
                if(questionNumber<questions.length){
                document.getElementById("questionNumberDisplay").innerHTML= "Question "+ (questionNumber+1) + " of "+ noOfQuestions;
                document.getElementById("fromConv").innerHTML = convertFrom + ": " + questions[questionNumber];
+               document.getElementById("userAnswer").value = "";
                }
            
                else{
@@ -1065,6 +1067,7 @@
                if(questionNumber<firstDigitQuestion.length){
                document.getElementById("questionNumberDisplay").innerHTML= "Question "+ (questionNumber+1) + " of "+ noOfQuestions;
                document.getElementById("fromConv").innerHTML =firstDigitQuestion[questionNumber]+ " " + operations + " " + secondDigitQuestions[questionNumber];
+               document.getElementById("userAnswer").value = "";
                }
            
                else{
