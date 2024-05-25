@@ -978,6 +978,9 @@
    <script> 
        var title = localStorage.getItem('title');
        var noOfQuestions = localStorage.getItem('noOfQuestions');
+       var firstDigitQuestion, firstDigitQuestion, secondDigitQuestion, secondDigitQuestions,base, operations;
+       var question, questions, convertFrom, convertTo, answer, answers, questionNumber, userAnswers;
+       var time;
       if(title=="Conversion"){
            
            var timerDuration = localStorage.getItem('timerDuration');
@@ -1010,7 +1013,7 @@
            
                else{
                clearInterval(interval);
-               var time = document.getElementById('timerz').innerText;
+               time = document.getElementById('timerz').innerText;
                results(time, userAnswers, answers, questions.length);
                convHistory(noOfQuestions,userAnswers, answers, questions);
                console.log(questions);
@@ -1019,22 +1022,23 @@
                }
            }
        }
+       
        if (title == "Arithmetic"){
            var timerDuration = localStorage.getItem('timerDuration');
    
-           var firstDigitQuestion = localStorage.getItem('firstDigitQuestion');
-           var firstDigitQuestion = firstDigitQuestion.split(",");
+           firstDigitQuestion = localStorage.getItem('firstDigitQuestion');
+           firstDigitQuestion = firstDigitQuestion.split(",");
    
-           var secondDigitQuestion = localStorage.getItem('secondDigitQuestion');
-           var secondDigitQuestions = secondDigitQuestion.split(",");
+           secondDigitQuestion = localStorage.getItem('secondDigitQuestion');
+           secondDigitQuestions = secondDigitQuestion.split(",");
    
-           var answer = localStorage.getItem('answers');
-           var answers = answer.split(",");
+           answer = localStorage.getItem('answers');
+           answers = answer.split(",");
    
-           var base = localStorage.getItem('base');
-           var operations = localStorage.getItem('operations');
-           var questionNumber = 0;
-           var userAnswers = [];
+           base = localStorage.getItem('base');
+           operations = localStorage.getItem('operations');
+           questionNumber = 0;
+           userAnswers = [];
    
            document.getElementById("title").innerHTML=base +" "+operations+ " Quiz";
            switch(operations){
@@ -1072,9 +1076,9 @@
            
                else{
                clearInterval(interval);
-               var time = document.getElementById('timerz').innerText;
+               time = document.getElementById('timerz').innerText;
                results(time,userAnswers, answers, firstDigitQuestion.length);
-               arithHistory(noOfQuestions, userAnswers, answers, firstDigitQuestion, secondDigitQuestions, operations)
+               arithHistory(noOfQuestions, userAnswers, answers, firstDigitQuestion, secondDigitQuestions, operations);
                console.log(firstDigitQuestion);
                console.log(secondDigitQuestions);
                console.log(answers);
@@ -1093,8 +1097,14 @@
                document.getElementById('timerz').innerText = (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
                if (--timer < 0) {
                    clearInterval(interval);
-                   
-   
+                   if(title=="Conversion"){
+                    results(time, userAnswers, answers, questions.length);
+                    convHistory(noOfQuestions,userAnswers, answers, questions);
+                   }
+                   if (title == "Arithmetic"){
+                    results(time,userAnswers, answers, firstDigitQuestion.length);
+                    arithHistory(noOfQuestions, userAnswers, answers, firstDigitQuestion, secondDigitQuestions, operations);
+                   }
                }
            }, 1000);
        }
@@ -1140,6 +1150,11 @@
        }
        function convHistory(noOfQuestions, userAnswers, answers, questions) {
            var disp = "<tr><td>Questions</td><td>Your Answer</td><td>Correct Answer</td></tr>";
+           if (userAnswers === undefined){
+            for(let i = 0; i <userAnswers.length; i++){
+                userAnswers[i]="";
+            }
+           }
            for (let i = 0; i < parseInt(noOfQuestions); i++) {
                disp += "<tr>";
                disp += "<td>" + questions[i] + "</td>";
@@ -1151,6 +1166,11 @@
        }
        function arithHistory(noOfQuestions, userAnswers, answers, firstDigitQuestion, secondDigitQuestions, operations){
            var disp = "<tr><td>Questions</td><td>Your Answer</td><td>Correct Answer</td></tr>";
+           if (userAnswers === undefined){
+            for(let i = 0; i <userAnswers.length; i++){
+                userAnswers[i]="";
+            }
+           }
            for (let i = 0; i < parseInt(noOfQuestions); i++) {
                disp += "<tr>";
                disp += "<td>" + firstDigitQuestion[i] +" "+operations+" "+ secondDigitQuestions[i] +"</td>";
